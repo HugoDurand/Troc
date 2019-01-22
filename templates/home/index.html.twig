@@ -3,5 +3,24 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
+    <div class="row">
+        <div>
+            Search section
+            <a href="{{ path('annonce')}}">See All</a>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            {% for categorie in categories %}
+
+                <a href="{{ path('annonce', { 'type': 'categorie', 'data': categorie.id }) }}">{{ categorie.libelle }}</a>
+
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

@@ -11,6 +11,22 @@
     <body>
 
         <div class="container-fluid">
+
+            {% if app.user.id is defined %}
+
+                Bienvenue <a href="{{ path('account') }}">{{ app.user.username }} !</a>
+                <a href="{{ path('security_logout')}}"> Déconnexion</a>
+
+            {% else %}
+
+                <a href="{{ path('security_login')}}"> Connexion</a>
+                <a href="{{ path('user_registration')}}"> S'enregister</a>
+
+            {% endif %}
+
+            <a class="btn btn-default" href="{{ path('new_annonce') }}">Ajouter une annonce</a>
+
+
             {% block body %}{% endblock %}
             {% block javascripts %}{% endblock %}
         </div>

@@ -11,20 +11,48 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Algolia\SearchBundle\IndexManagerInterface;
+
 class AnnonceController extends AbstractController
 {
+
+
+    protected $indexManager;
+
+    public function __construct(IndexManagerInterface $indexingManager)
+    {
+        $this->indexManager = $indexingManager;
+    }
+
+
     /**
-     * @Route("/annonce", name="annonce")
+     * @Route("/annonce/{type}/{data}", name="annonce", defaults={"type"=null, "data"=null})
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $em = $this->getDoctrine()->getManager();
-        $annonces = $em->getRepository(Annonce::class)->findAll();
+
+
+        if($request->get('type') == NULL){
+
+            $annonces = $em->getRepository(Annonce::class)->findAll();
+
+        }elseif($request->get('type') == 'search'){
+
+            $em = $this->getDoctrine()->getManagerForClass(Annonce::class);
+            $annonces = $this->indexManager->search($request->get('data'), Annonce::class, $em);
+
+        }elseif($request->get('type')== 'categorie'){
+
+            $annonces = $em->getRepository(Annonce::class)->findBy(['categorie'=>$request->get('data')]);
+
+        }
 
 
         return $this->render('annonce/index.html.twig', [
             'annonces' => $annonces,
+
         ]);
     }
 
@@ -32,7 +60,7 @@ class AnnonceController extends AbstractController
 
 
     /**
-     * @Route("annonce/{id}", name="show_annonce")
+     * @Route("/show/{id}", name="show_annonce")
      */
     public function show(Request $request)
     {
@@ -52,7 +80,7 @@ class AnnonceController extends AbstractController
 
 
     /**
-     * @Route("annonce/new", name="new_annonce")
+     * @Route("/new", name="new_annonce")
      */
     public function add(Request $request)
     {

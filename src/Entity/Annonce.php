@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -38,16 +39,19 @@ class Annonce
     private $date_creation;
 
     /**
+     * @Groups({"searchable"})
      * @ORM\Column(type="string", length=255)
      */
     private $libelle;
 
     /**
+     * @Groups({"searchable"})
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Groups({"searchable"})
      * @ORM\Column(type="string", length=255)
      */
     private $localisation;
@@ -58,6 +62,7 @@ class Annonce
     private $photo;
 
     /**
+     * @Groups({"searchable"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
      */
