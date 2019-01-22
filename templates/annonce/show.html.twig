@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+
+{% block body %}
+
+        {{ annonce.id }}
+        {{ annonce.libelle }}
+        {{ annonce.description }}
+        {{ annonce.dateCreation|date }}
+        {{ annonce.localisation }}
+<br/>
+
+        utilisateur créateur : {{ user.id }}
+
+    utilisateur actuelle en session : {{ app.user.id }}
+
+    <a href="{{ path('chat', { 'id': user.id }) }}">go to chat</a>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+
+{% block body %}
+
+
+    {% if app.user.id is defined %}
+
+        Bienvenue <a href="{{ path('account') }}">{{ app.user.username }} !</a>
+        <a href="{{ path('security_logout')}}"> Déconnexion</a>
+
+    {% else %}
+
+        <a href="{{ path('security_login')}}"> Connexion</a>
+        <a href="{{ path('user_registration')}}"> S'enregister</a>
+
+    {% endif %}
+
+    <a class="btn btn-default" href="{{ path('new_annonce') }}">Ajouter une annonce</a>
+
+
+        {% for annonce in annonces %}
+            <br/> <a href="{{ path('show_annonce', { 'id': annonce.id }) }}">
+                {{ annonce.id }}
+                {{ annonce.libelle }}
+                {{ annonce.photo }}
+                {{ annonce.localisation }}
+            </a><br/>
+        {% endfor %}
+
+
+
+{% endblock %}

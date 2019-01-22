@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_row(form.firstname) }}
+    {{  form_row(form.lastname) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.phone) }}
+    {{  form_row(form.photo) }}
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
+
+<button type="submit">S'inscrire !</button>
+{{ form_end(form) }}

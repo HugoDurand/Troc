@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+WESH {{ app.user.username }} !
+
+    {% for annonce in annonces %}
+        {{ annonce.libelle }}
+    {% endfor %}
+
+{% endblock %}
