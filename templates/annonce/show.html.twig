@@ -15,6 +15,6 @@
 
     utilisateur actuelle en session : {{ app.user.id }}
 
-    <a href="{{ path('chat', { 'id': user.id }) }}">go to chat</a>
+    <a href="{{ path('chat', { 'id_receiver': user.id, 'id_annonce': annonce.id}) }}">go to chat</a>
 
 {% endblock %}

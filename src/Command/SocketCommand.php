@@ -13,6 +13,7 @@ use Ratchet\WebSocket\WsServer;
 
 // Change the namespace according to your bundle
 use App\Sockets\Chat;
+use Ratchet\App;
 
 class SocketCommand extends Command
 {
@@ -51,5 +52,8 @@ class SocketCommand extends Command
         $server = IoServer::factory($this->httpServer,8080);
 
         $server->run();
+
+
+
     }
 }

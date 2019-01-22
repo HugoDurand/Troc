@@ -53,7 +53,7 @@ class Chat implements MessageComponentInterface {
         echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
 
-        $this->persist_flush($msg);
+    $this->persist_flush($msg);
 
         foreach ($this->clients as $client) {
             if ($from !== $client) {

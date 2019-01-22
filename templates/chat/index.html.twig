@@ -13,11 +13,12 @@
 
             {% if message.sender == app.user.id %}
 
-                <li>{{ message.message }}</li>
+                <li class="sender">{{ message.message }}</li>
 
             {% else %}
 
-                <li>{{ message.message }}</li>
+                <li class="receiver">{{ message.message }}</li>
+
             {% endif %}
 
     {% endfor %}
@@ -34,17 +35,10 @@
         username: new Date().getTime().toString(),
         envoyeur: {{ app.user.id }},
         destinataire: {{ user.id }},
-        annonce_id: 1
-        // You can add more information in a static object
+        annonce_id: {{ app.request.get('id_annonce') }}
     };
 
-    // START SOCKET CONFIG
-    /**
-     * Note that you need to change the "sandbox" for the URL of your project.
-     * According to the configuration in Sockets/Chat.php , change the port if you need to.
-     * @type WebSocket
-     */
-    var conn = new WebSocket('ws://localhost:8080');
+    var conn = new WebSocket("ws://localhost:8080");
 
     conn.onopen = function(e) {
         console.info("Connection established succesfully");
@@ -69,7 +63,8 @@
         var msg = document.getElementById("form-message").value;
 
         if(!msg){
-            alert("Please send something on the chat");
+            alert("Message vide !");
+            return 0;
         }
 
         Chat.sendMessage(msg);
@@ -82,17 +77,24 @@
         appendMessage: function(username,message){
             var from;
 
-            if(username == clientInformation.username){
-                from = "me";
-            }else{
-                from = clientInformation.username;
-            }
+            //if(username == clientInformation.username){
+            //    from = "me";
+            //}else{
+            //    from = clientInformation.username;
+            //}
 
-            // Append List Item
+
             var ul = document.getElementById("chat-list");
             var li = document.createElement("li");
-            li.appendChild(document.createTextNode(from + " : "+ message));
+            //li.appendChild(document.createTextNode(from + " : "+ message));
+            li.appendChild(document.createTextNode(message));
             ul.appendChild(li);
+
+            if(username == clientInformation.username){
+                li.setAttribute("class", "sender");
+            }else{
+                li.setAttribute("class", "receiver");
+            }
         },
         sendMessage: function(text){
             clientInformation.message = text;
@@ -103,6 +105,16 @@
         }
     };
 </script>
+
+    <style>
+        .sender{
+            color: #5eb5e0;
+        }
+
+        .receiver{
+            color: #718C00;
+        }
+    </style>
 
 
 {% endblock %}
