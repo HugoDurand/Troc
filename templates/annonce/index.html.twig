@@ -20,7 +20,7 @@
             {% for annonce in annonces %}
                 <a  class="annonce_card" href="{{ path('show_annonce', { 'id': annonce.id }) }}">
                     <div>
-                            <img src="" alt="">{{ annonce.photo }}
+                            <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
                             <h3>{{ annonce.libelle }}</h3>
                             <h4>{{ annonce.localisation }}</h4>
                     </div>

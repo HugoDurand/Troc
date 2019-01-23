@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\UploadFile;
 
 use Algolia\SearchBundle\IndexManagerInterface;
 
@@ -86,7 +87,7 @@ class AnnonceController extends AbstractController
     /**
      * @Route("/new", name="new_annonce")
      */
-    public function add(Request $request)
+    public function add(Request $request, UploadFile $uploadFile)
     {
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
@@ -102,6 +103,10 @@ class AnnonceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $file = $form->get('photo')->getData();
+            $fileName = $uploadFile->upload($file);
+            $annonce->setPhoto($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($annonce);
             $em->flush();
@@ -114,5 +119,14 @@ class AnnonceController extends AbstractController
         ]);
 
 
+    }
+
+
+    /**
+     * @return string
+     */
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 }

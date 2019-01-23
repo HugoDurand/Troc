@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    annonce_picture: '%kernel.project_dir%/public/annonce_picture'
 
 services:
     # default configuration for services in *this* file
@@ -42,3 +43,7 @@ services:
     Ratchet\WebSocket\WsServer:
         class: Ratchet\WebSocket\WsServer
         arguments: ['@App\Sockets\Chat']
+
+    App\Service\UploadFile:
+        arguments:
+            $directory: '%annonce_picture%'

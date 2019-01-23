@@ -24,7 +24,7 @@ class AnnonceType extends AbstractType
     {
         $builder->add('libelle', TextType::class, array('label'=>'Libelle'))
                 ->add('description',TextareaType::class, array('label'=>'Description'))
-                ->add('photo', TextType::class, array('label'=>'photo'))
+                ->add('photo', FileType::class, array('label'=>'photo'))
                 ->add('localisation', TextType::class, array('label' => 'Localisation'))
                 ->add('categorie', EntityType::class, array(
                     'label' => 'Catégorie',

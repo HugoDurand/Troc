@@ -2,9 +2,6 @@
 
 {% block title %}Annonces{% endblock %}
 
-{% block javascripts %}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfpkjVB4naLB6PdQf-pcL1QA7VTOc0b3A&libraries=places&callback=initAutocomplete" async defer></script>
-{% endblock %}
 
 {% block body %}
 
@@ -25,6 +22,7 @@
 
 
     {% block javascripts %}
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfpkjVB4naLB6PdQf-pcL1QA7VTOc0b3A&libraries=places&callback=initAutocomplete" async defer></script>
         {{ encore_entry_script_tags('googleMaps') }}
     {% endblock %}
 

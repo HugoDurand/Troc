@@ -3,7 +3,7 @@
 {% block title %}Annonces{% endblock %}
 
 {% block body %}
-
+        <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
         {{ annonce.id }}
         {{ annonce.libelle }}
         {{ annonce.description }}
