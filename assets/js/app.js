@@ -7,6 +7,10 @@
 
 // any CSS you require will output into a single css file (app.scss in this case)
 import '../css/app.scss';
+import '../css/reset.scss';
+import '../css/login.scss';
+import '../css/annonces_full.scss';
+
 
 
 

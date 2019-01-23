@@ -26,7 +26,13 @@ class HomeController extends AbstractController
 
         $defaultData = array('search' => '');
         $form = $this->createFormBuilder($defaultData)
-            ->add('search', TextType::class)
+            ->add('search', TextType::class, array(
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Rechercher un article',
+                    'class'=>'search'
+                )
+            ))
             ->getForm();
 
         $form->handleRequest($request);

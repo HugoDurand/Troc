@@ -1,0 +1,74 @@
+@import 'app';
+
+.well{
+    .login_title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 300px;
+        width: 100%;
+        background-color: var(--very-light-blue);
+        position: relative;
+        z-index: -1;
+
+        .path_home{
+            position: absolute;
+            left: 35%;
+            width: 20%;
+        }
+
+        h1{
+            @extend %title;
+            z-index: 2;
+        }
+        h2{
+            @extend %subtitle;
+            max-width: 350px;
+            text-align: center;
+            margin-top: 25px;
+            z-index: 2;
+        }
+    }
+
+    form{
+        margin-top: 55px;
+        display: flex;
+        justify-content: center;
+
+        fieldset{
+            display: flex;
+        }
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            width: 402px;
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-top: 25px;
+    
+            label{
+                @extend %label;
+            }
+    
+            input{
+                width: 402px;
+                border: none;
+                border-bottom: 1px solid var(--charcoal);
+                outline: none;
+                @extend %input;
+            }
+    
+            input::placeholder{
+                @extend %placeholder;
+            }
+        }
+    
+        button{
+            @extend %button;
+            margin: 55px auto;
+            align-items: inherit;
+        }
+    }
+
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="80px" viewBox="0 0 150 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>logoFull</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Accueil" transform="translate(-80.000000, -45.000000)">
+            <g id="nav" transform="translate(80.000000, 45.000000)">
+                <g id="logoFull">
+                    <g id="logo" fill-rule="nonzero">
+                        <rect id="Rectangle" fill="#2D3047" x="0" y="0" width="80" height="80" rx="25"></rect>
+                        <g id="Group" transform="translate(14.805195, 23.636364)">
+                            <ellipse id="Oval" fill="#FFFFFF" cx="16.3966193" cy="16.3636364" rx="16.3966193" ry="16.3636364"></ellipse>
+                            <ellipse id="Oval" fill="#B5FFE9" cx="33.9929911" cy="16.3636364" rx="16.3966193" ry="16.3636364"></ellipse>
+                            <path d="M25.1948052,2.55280123 C29.7630564,5.45735858 32.7932385,10.5573408 32.7932385,16.3636364 C32.7932385,22.1699319 29.7630564,27.2699141 25.1948052,30.1744715 C20.626554,27.2699141 17.5963719,22.1699319 17.5963719,16.3636364 C17.5963719,10.5573408 20.626554,5.45735858 25.1948052,2.55280123 Z" id="Combined-Shape" fill="#2D3047"></path>
+                        </g>
+                    </g>
+                    <text id="Troc" font-family="Montserrat-Regular, Montserrat" font-size="24" font-weight="normal" fill="#292929">
+                        <tspan x="100" y="46">Troc</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

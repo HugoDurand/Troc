@@ -3,27 +3,32 @@
 {% block title %}Annonces{% endblock %}
 
 {% block body %}
+<section class="annonces_background">
 
-    <div class="row">
-
+    <div class="annonces_full">
         <div class="col-md-3">
             {% for categorie in categories %}
-                {{ categorie.libelle }}<br/>
+            <ul>
+                <li>
+                     <a href="">{{ categorie.libelle }}</a>
+                </li>
+            </ul>
             {% endfor %}
 
         </div>
         <div class="col-md-9">
             {% for annonce in annonces %}
-                <br/> <a href="{{ path('show_annonce', { 'id': annonce.id }) }}">
-                {{ annonce.id }}
-                {{ annonce.libelle }}
-                {{ annonce.photo }}
-                {{ annonce.localisation }}
+                <a  class="annonce_card" href="{{ path('show_annonce', { 'id': annonce.id }) }}">
+                    <div>
+                            <img src="" alt="">{{ annonce.photo }}
+                            <h3>{{ annonce.libelle }}</h3>
+                            <h4>{{ annonce.localisation }}</h4>
+                    </div>
             </a><br/>
             {% endfor %}
         </div>
     </div>
-
+</section>
 
 
 {% endblock %}
