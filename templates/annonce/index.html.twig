@@ -4,14 +4,25 @@
 
 {% block body %}
 
-        {% for annonce in annonces %}
-            <br/> <a href="{{ path('show_annonce', { 'id': annonce.id }) }}">
+    <div class="row">
+
+        <div class="col-md-3">
+            {% for categorie in categories %}
+                {{ categorie.libelle }}<br/>
+            {% endfor %}
+
+        </div>
+        <div class="col-md-9">
+            {% for annonce in annonces %}
+                <br/> <a href="{{ path('show_annonce', { 'id': annonce.id }) }}">
                 {{ annonce.id }}
                 {{ annonce.libelle }}
                 {{ annonce.photo }}
                 {{ annonce.localisation }}
             </a><br/>
-        {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
 
 
 

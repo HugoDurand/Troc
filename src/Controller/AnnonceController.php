@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Annonce;
+use App\Entity\Categorie;
 use App\Entity\User;
 use App\Form\AnnonceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,9 +50,12 @@ class AnnonceController extends AbstractController
 
         }
 
+        $categories = $em->getRepository(Categorie::class)->findAll();
+
 
         return $this->render('annonce/index.html.twig', [
             'annonces' => $annonces,
+            'categories' => $categories,
 
         ]);
     }
