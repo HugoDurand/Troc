@@ -10,22 +10,33 @@
             {% for categorie in categories %}
             <ul>
                 <li>
-                     <a href="">{{ categorie.libelle }}</a>
+                     <a href="{{ path('annonce', { 'type': 'categorie', 'data': categorie.id }) }}">{{ categorie.libelle }}</a>
                 </li>
             </ul>
             {% endfor %}
 
         </div>
         <div class="col-md-9">
-            {% for annonce in annonces %}
+            <div class="serchDiv">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+
+            <div class="articles_container">
+                {% for annonce in annonces %}
                 <a  class="annonce_card" href="{{ path('show_annonce', { 'id': annonce.id }) }}">
                     <div>
-                            <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
+                        <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
+                        <div class="article_content">
                             <h3>{{ annonce.libelle }}</h3>
                             <h4>{{ annonce.localisation }}</h4>
+                        </div>
                     </div>
-            </a><br/>
-            {% endfor %}
+                </a>
+                {% endfor %}
+            </div>
+
         </div>
     </div>
 </section>

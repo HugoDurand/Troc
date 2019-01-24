@@ -52,7 +52,7 @@ Encore
 
     .enableSassLoader()
     .autoProvidejQuery()
-    .copyFiles({from: './assets/images'})
+    .copyFiles({from: './assets/images', to: 'images/[path][name].[ext]'})
 
 ;
 

@@ -1,0 +1,81 @@
+@import 'app';
+
+.annonce_show{
+    background-color: var(--very-light-blue);
+    padding-top: 50px;
+    height: 100vh;
+    min-height: 750px;
+
+        .annonce_detail{
+            width: 70vw;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+
+            .left{
+                width: 50%;
+                display: flex;
+                align-items: center;
+
+                img{
+                    width: 100%;
+                }
+            }
+
+            .right{
+                width: 40%;
+
+                .date{
+                    font-family: 'Montserrat';
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: var(--cool-grey);
+                    margin-bottom: 50px;
+                }
+
+                .white_bg{
+                    background-color: white;
+                    padding: 55px;
+                    position: relative;
+                    h1{
+                        @extend %title;
+                    }
+                    .description{
+                        font-family: 'Montserrat';
+                        font-size: 14px;
+                        font-weight: 300;
+                        line-height: 1.71;
+                        color: var(--charcoal);
+                        max-width: 290px;
+                        margin-top: 55px;
+                    }
+                    .chat_btn{
+                        width: 225px;
+                        height: 55px;
+                        display: block;
+                        text-decoration: none;
+                        line-height: 55px;
+                        border-radius: 3px;
+                        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+                        background-color: var(--dark);
+                        cursor: pointer;
+                        @extend %text_button;
+                        position: absolute;
+                        bottom: -30px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+    .iframe{
+        position: relative !important;
+        margin-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

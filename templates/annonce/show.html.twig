@@ -3,18 +3,25 @@
 {% block title %}Annonces{% endblock %}
 
 {% block body %}
-        <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
-        {{ annonce.id }}
-        {{ annonce.libelle }}
-        {{ annonce.description }}
-        {{ annonce.dateCreation|date }}
-        {{ annonce.localisation }}
-<br/>
+<section class="annonce_show">
+        <div class="annonce_detail">
+                <div class="left">
+                        <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
+                </div>
+                <div class="right">
+                        <p class="date">{{ annonce.dateCreation|date }}</p>
+                        <div class="white_bg">
+                                <h1>{{ annonce.libelle }}</h1>
+                                <p class="description">{{ annonce.description }}</p><br/>
+                                <a href="mailto:{{ user.email }}"><p>{{ user.email }}</p></a>
 
-        utilisateur créateur : {{ user.id }}
+                                <a class="chat_btn" href="{{ path('chat', { 'id_receiver': user.id, 'id_annonce': annonce.id}) }}">go to chat</a>
+                        </div>
+                </div>
+        </div>
+       <div class="iframe">
+               <iframe  width="1000" height="450" position="relative" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{ annonce.localisation }}&key=AIzaSyDfpkjVB4naLB6PdQf-pcL1QA7VTOc0b3A" allowfullscreen></iframe>
+       </div>
 
-    utilisateur actuelle en session : {{ app.user.id }}
-
-    <a href="{{ path('chat', { 'id_receiver': user.id, 'id_annonce': annonce.id}) }}">go to chat</a>
-
+</section>
 {% endblock %}

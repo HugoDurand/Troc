@@ -1,63 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+<div class="well">
+        <div class="login_title">
+                <img class="path_home" src="{{ asset('build/images/path_home.svg') }}" alt="">
+                <h1><i class="fa fa-lock" aria-hidden="true"></i> Inscription</h1>
+                <h2>Accédez dès maintenant aux meilleures offres made in Troc !</h2>
+        </div>
+    </div>
+
+<div class="register_form">
 {{ form_start(form) }}
-    {{ form_row(form.firstname) }}
-    {{  form_row(form.lastname) }}
+
+    {{ form_row(form.firstname) }} 
+    {{ form_row(form.lastname) }}
     {{ form_row(form.username) }}
     {{ form_row(form.email) }}
     {{ form_row(form.phone) }}
-    {{  form_row(form.photo) }}
     {{ form_row(form.password.first) }}
     {{ form_row(form.password.second) }}
 
 <button type="submit">S'inscrire !</button>
 {{ form_end(form) }}
+</div>
 
-{# {% extends 'base.html.twig' %}
-
-{% block body %}
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error.messageKey }}
-        </div>
-    {% endif %}
-
-    <div class="row">
-    <div class="col-sm-5">
-        <div class="well">
-                <div class="login_title">
-                        <img class="path_home" src="{{ asset('build/path_home.svg') }}" alt="">
-                        <h1><i class="fa fa-lock" aria-hidden="true"></i> Connexion</h1>
-                        <h2>Accédez dès maintenant aux meilleures offres made in Troc !</h2>
-                </div>
-            <form action="{{ path('security_login') }}" method="post">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="firstname">Prénom</label>
-                        <input placeholder="Entrez votre prénom" type="text" id="firstname" name="_firstnam" value="{{ last_firstname }}" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Nom</label>
-                        <input placeholder="Entrez votre nom" type="text" id="lastname" name="_lastname" value="{{ last_lastname }}" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input placeholder="Entrez votre username" type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input placeholder="Entrez votre email" type="email" id="email" name="_email" value="{{ last_email }}" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input placeholder="Entrez votre mot de passe" type="password" id="password" name="_password" class="form-control" />
-                    </div>
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                    <button type="submit" class="btn btn-primary">
-                         Valider
-                    </button>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-
-
-{% endblock %} #}
+   
+{% endblock %} 

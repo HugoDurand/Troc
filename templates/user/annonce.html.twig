@@ -1,8 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="annonces_full">
 
-    {% for annonce in annonces %}
-        {{ annonce.description }}
-    {% endfor %}
+        <div class="col-md-9 profile_annonces">
+            <a class="link_retour_annonce" href="{{ path('account') }}"> Retour</a>
+            <div class="articles_container">
+                {% for annonce in annonces %}
+                    <a  class="annonce_card" href="{{ path('show_annonce', { 'id': annonce.id }) }}">
+                        <div>
+                            <img src="{{ asset('annonce_picture/'~annonce.photo) }}" alt="">
+                            <div class="article_content">
+                                <h3>{{ annonce.libelle }}</h3>
+                                <h4>{{ annonce.localisation }}</h4>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

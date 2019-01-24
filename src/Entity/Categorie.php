@@ -24,6 +24,11 @@ class Categorie
     private $libelle;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Annonce", mappedBy="categorie")
      */
     private $annonces;
@@ -49,6 +54,24 @@ class Categorie
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo): void
+    {
+        $this->photo = $photo;
+    }
+
+
 
     /**
      * @return Collection|Annonce[]

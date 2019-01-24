@@ -8,13 +8,35 @@
         {% endblock %}
     </head>
     <body>
+            <div class="row_menu">
+                <div class="logo">
+                    <h1> <a href="{{ path('home') }}"><img src="{{ asset('build/images/logo.svg') }}" class="logo"></a></h1>
+                    {#{{ render(controller('App\\Controller\\HomeController::search')) }}#}
+                </div>
+                <div class="menu_left">
+                    <ul>
+                        <li><a style="color: #EF7E5E; text-decoration: underline" class="proposer" href="{{ path('new_annonce')}}">Proposer un object</a></li>
+                        <li><a class="seeAll" href="{{ path('annonce')}}">See All</a></li>
+                        <li>
+                            {% if app.user.id is defined %}
+                            <a href="{{ path('account') }}">Bienvenue {{ app.user.username }} !</a>
+                        <li><a href="{{ path('security_logout')}}"> Déconnexion</a></li>
 
-        <div>
+                        {% else %}
+                        </li>
+                        <li>
+                            <a class="connexion" href="{{ path('security_login')}}"> Connexion</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+
             {% block body %}{% endblock %}
 
             {% block javascripts %}
                 {{ encore_entry_script_tags('app') }}
             {% endblock %}
-        </div>
     </body>
 </html>

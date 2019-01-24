@@ -104,12 +104,32 @@ body, html {
     margin: 0 auto;
 }
 
+.serchDiv{
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+
+    .search{
+        width: 440px;
+        height: 55px;
+        border-radius: 8px;
+        border: solid 1px var(--cool-grey);
+        background: transparent;
+        font-size: 18px;
+        color: var(--charcoal);
+        outline: none;
+        margin: 0 auto;
+      display: block;
+    }
+}
+
 .row_menu{
     display: flex;
     height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 80px;
+    max-width: 1440px;
 
     .logo {
         width: 10vw;
@@ -127,23 +147,6 @@ body, html {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-    }
-
-
-    .serchDiv{
-        margin-left: 55px;
-        font-family: 'Montserrat', sans-serif;
-
-        .search{
-            width: 440px;
-            height: 55px;
-            border-radius: 8px;
-            border: solid 1px var(--cool-grey);
-            background: transparent;
-            font-size: 18px;
-            color: var(--charcoal);
-            outline: none;
-        }
     }
 }
 
@@ -256,15 +259,48 @@ body, html {
 
     .categories_list{
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         margin-top: 75px;
+
     }
 
     .category{
         width: 255px;
         height: 255px;
         background-color: rgba(55, 54, 51, 0.4);
-        margin: 0px 10% 0px 0px;
+        margin: 0px 10% 55px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+
+        &:hover{
+            box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) scale(1.05);
+            transition: 0.5s ease-in-out;
+            .category_overlay{
+                opacity: 1;
+                transition: 0.5s ease-in-out;
+            }
+        }
+    }
+
+    .category_name{
+        @extend %subtitle;
+        color: white;
+        text-decoration: none;
+        z-index: 2;
+    }
+
+    .category_overlay{
+        background-color: var(--dark);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
     }
 }
 

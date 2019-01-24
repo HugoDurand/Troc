@@ -4,20 +4,31 @@
 
 {% block body %}
 
+<div class="separator"></div>
+    <div class="list_chat">
 
-<h1>Chat</h1>
-
+        {% for chat in chats %}
+           <a class="icon_chat" href="{{ path('chat', { 'id_receiver': chat.receiver, 'id_annonce': chat.annonce_id}) }}">
+               <img style="width: 100px; height: 100px; border-radius: 50%" src="{{ asset('annonce_picture/'~chat.photo) }}" alt="">
+           </a>
+            <div class="separator"></div>
+        {% endfor %}
+    </div>
 <ul id="chat-list">
 
     {% for message in messages %}
 
             {% if message.sender == app.user.id %}
 
-                <li class="sender">{{ message.message }}</li>
+                <li class="sender">
+                    <p>{{ message.message }}</p>
+                </li>
 
             {% else %}
 
-                <li class="receiver">{{ message.message }}</li>
+                <li class="receiver">
+                    <p>{{ message.message }}</p>
+                </li>
 
             {% endif %}
 
@@ -25,9 +36,13 @@
 
 </ul>
 
-<hr>
-<textarea id="form-message" placeholder="Your public message here"></textarea>
-<input type="button" id="form-submit" value="Send message"/>
+    <div class="separator"></div>
+
+<div class="message_container">
+    <textarea id="form-message" placeholder="Your public message here"></textarea>
+    <input type="button" id="form-submit" value="Send message"/>
+</div>
+
 
 <script>
     var clientInformation = {
@@ -38,7 +53,7 @@
         annonce_id: {{ app.request.get('id_annonce') }}
     };
 
-    var conn = new WebSocket("ws://localhost:8080");
+    var conn = new WebSocket("ws://localhost:9001");
 
     conn.onopen = function(e) {
         console.info("Connection established succesfully");
@@ -108,11 +123,23 @@
 
     <style>
         .sender{
-            color: #5eb5e0;
+            max-width: 385px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--charcoal);
+            word-break: break-all;
         }
 
         .receiver{
-            color: #718C00;
+            max-width: 385px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--charcoal);
+            word-break: break-all;
         }
     </style>
 

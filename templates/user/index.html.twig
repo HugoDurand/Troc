@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-WESH {{ app.user.username }} !
+    <div class="well">
+        <div class="login_title">
+            <img class="path_home" src="{{ asset('build/images/path_home.svg') }}" alt="">
+            <h1><i class="fa fa-lock" aria-hidden="true"></i> Hello</h1>
+            <h2> {{ app.user.username }} !</h2>
+        </div>
 
+        <a class="link_annonce" href="{{ path('account_annonces') }}"> voir mes annonces</a>
+        <div class="register_form">
+            {{ form_start(form) }}
+            {{ form_row(form.firstname) }}
+            {{ form_row(form.lastname) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.phone) }}
+            {{ form_row(form.password.first) }}
+            {{ form_row(form.password.second) }}
 
-    {{ form_start(form) }}
-    {{ form_row(form.firstname) }}
-    {{  form_row(form.lastname) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.phone) }}
-    {{  form_row(form.photo) }}
-    {{ form_row(form.password.first) }}
-    {{ form_row(form.password.second) }}
-
-    <button type="submit">Update !</button>
-    {{ form_end(form) }}
-
+            <button type="submit">Update !</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

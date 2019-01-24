@@ -9,6 +9,7 @@ use App\Form\AnnonceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\UploadFile;
@@ -54,10 +55,29 @@ class AnnonceController extends AbstractController
         $categories = $em->getRepository(Categorie::class)->findAll();
 
 
+        $defaultData = array('search' => '');
+        $form = $this->createFormBuilder($defaultData)
+            ->add('search', TextType::class, array(
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Rechercher un article',
+                    'class'=>'search'
+                )
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            return $this->redirect($this->generateUrl('annonce', array('type'=> 'search', 'data' => $data['search'])));
+        }
+
+
         return $this->render('annonce/index.html.twig', [
             'annonces' => $annonces,
             'categories' => $categories,
-
+            'form' => $form->createView(),
         ]);
     }
 
@@ -119,14 +139,5 @@ class AnnonceController extends AbstractController
         ]);
 
 
-    }
-
-
-    /**
-     * @return string
-     */
-    private function generateUniqueFileName()
-    {
-        return md5(uniqid());
     }
 }

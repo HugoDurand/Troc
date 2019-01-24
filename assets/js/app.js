@@ -10,6 +10,8 @@ import '../css/app.scss';
 import '../css/reset.scss';
 import '../css/login.scss';
 import '../css/annonces_full.scss';
+import '../css/annonce_show.scss';
+import '../css/chat.scss';
 
 
 

@@ -6,53 +6,14 @@
 <section  class="container-fluid">
 
     <section class="firstSection">
-
-        <div class="row_menu">
-
-            {#<img class="logo" src="{{ asset('build/Picture1.png') }}">#}
-            <div class="logo"> 
-           <h1> <img src="{{ asset('build/logo.svg') }}" class="logo"> </h1>
-
-             <div class="serchDiv">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                {{ form_end(form) }}
-        </div>
-        </div>
-
-
-
-
-        <div class="menu_left">
-
-        <ul>
-            <li><a class="seeAll" href="{{ path('annonce')}}">See All</a></li>
-            <li>
-                {% if app.user.id is defined %}
-                Bienvenue <a href="{{ path('account') }}">{{ app.user.username }} !</a>
-                <li><a href="{{ path('security_logout')}}"> Déconnexion</a></li>
-
-            {% else %}
-            </li>
-            <li>{#<a href="{{ path('user_registration')}}"> S'enregister</a>#}
-                <a class="connexion" href="{{ path('security_login')}}"> Connexion</a></li>
-        </ul>
-            
-
-
-
-
-
-
-
-            {% endif %}
-        </div>
-
-        </div>
-
         <div class="row_firstSection">
             <div class="leftSide_firstSection">
-                <img class="path_home" src="{{ asset('build/path_home.svg') }}" alt="">
+                <img class="path_home" src="{{ asset('build/images/path_home.svg') }}" alt="">
+                <div class="serchDiv">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
                 <h1 class="titre">Le premier site de troc Français</h1>
                 <h3 class="sousTitre">De particulier à particulier</h3>
                 <a href="{{ path('new_annonce') }}"><button class="addAnnonce_button">Proposer un objet</button></a>
@@ -69,8 +30,9 @@
         <div class="row categories_list">
                 {% for categorie in categories %}
 
-                    <div class="category">
-                        <a href="{{ path('annonce', { 'type': 'categorie', 'data': categorie.id }) }}">{{ categorie.libelle }}</a>
+                    <div style="background-image: url({{ asset('build/images/' ~ categorie.photo ) }});background-position: center;background-size: cover;" class="category">
+                        <div class="category_overlay"></div>
+                        <a class="category_name" href="{{ path('annonce', { 'type': 'categorie', 'data': categorie.id }) }}">{{ categorie.libelle }}</a>
                     </div>
 
                 {% endfor %}
@@ -87,7 +49,7 @@
 
                 <div class="cherchezBox">
 
-                    <img class="loupe" src="{{ asset('build/loupe.svg') }}" />
+                    <img class="loupe" src="{{ asset('build/images/loupe.svg') }}" />
                     <h6 class="titre_cherchezBox">Cherchez</h6>
                     <p class="texte_cherchezBox">Un objet, dans toute la France et parmi de nombreuses catégories</p>
 
@@ -95,7 +57,7 @@
 
                 <div class="recevezBox">
 
-                    <img class="target" src="{{ asset('build/target.svg') }}" />
+                    <img class="target" src="{{ asset('build/images/target.svg') }}" />
                     <h6 class="titre_recevezBox">Recevez</h6>
                     <p class="texte_recevezBox">Votre nouvel objet, rapidement et simplement, chez vous</p>
 
@@ -106,7 +68,7 @@
             <div class="middleSide_secondSection">
                 <div class="trouvezBox">
 
-                    <img class="present" src="{{ asset('build/present.svg') }}" />
+                    <img class="present" src="{{ asset('build/images/present.svg') }}" />
                     <h6 class="titre_trouvezBox">Trouvez</h6>
                     <p class="texte_trouvezBox">Un troceur avec qui échanger votre objet !</p>
 
@@ -126,24 +88,24 @@
     </section>
 
     <section class="reassurance">
-            <img class="path_rea1" src="{{ asset('build/path_rea1.svg') }}" alt="">
-            <img class="path_rea2" src="{{ asset('build/path_rea2.svg') }}" alt="">
-            <img class="path_rea3" src="{{ asset('build/path_rea3.svg') }}" alt="">
+            <img class="path_rea1" src="{{ asset('build/images/path_rea1.svg') }}" alt="">
+            <img class="path_rea2" src="{{ asset('build/images/path_rea2.svg') }}" alt="">
+            <img class="path_rea3" src="{{ asset('build/images/path_rea3.svg') }}" alt="">
             <div class="cards">
                 <div class="card">
-                    <img src="{{ asset('build/laugh.svg') }}" alt="">
+                    <img src="{{ asset('build/images/laugh.svg') }}" alt="">
                     <h4>Des clients</h4>
                     <p>satisfaits à 99%</p>
                 </div>
 
                 <div class="card">
-                    <img src="{{ asset('build/truck.svg') }}" alt="">
+                    <img src="{{ asset('build/images/truck.svg') }}" alt="">
                     <h4>Des livraisons</h4>
                     <p>partout en France !</p>
                 </div>
 
                 <div class="card">
-                    <img src="{{ asset('build/certif.svg') }}" alt="">
+                    <img src="{{ asset('build/images/certif.svg') }}" alt="">
                     <h4>La certification</h4>
                     <p>que tous les troceurs sont fiables</p>
                 </div>

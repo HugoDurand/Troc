@@ -22,10 +22,10 @@ class AnnonceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('libelle', TextType::class, array('label'=>'Libelle'))
-                ->add('description',TextareaType::class, array('label'=>'Description'))
-                ->add('photo', FileType::class, array('label'=>'photo'))
-                ->add('localisation', TextType::class, array('label' => 'Localisation'))
+        $builder->add('libelle', TextType::class, array('label'=>'Libelle', 'attr'=>array('placeholder' => 'Libelle')))
+                ->add('description',TextareaType::class, array('label'=>'Description', 'attr'=>array('placeholder' => 'Description')))
+                ->add('photo', FileType::class, array('label'=>'photo', 'attr'=>array('placeholder' => 'Photo')))
+                ->add('localisation', TextType::class, array('label' => 'Localisation', 'attr'=>array('placeholder' => 'Localisation')))
                 ->add('categorie', EntityType::class, array(
                     'label' => 'Catégorie',
                     'class'=> Categorie::class,

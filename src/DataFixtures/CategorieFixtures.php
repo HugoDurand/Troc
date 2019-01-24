@@ -12,11 +12,12 @@ class CategorieFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach ($this->getCategorieData() as [$libelle]) {
+        foreach ($this->getCategorieData() as [$libelle, $photo]) {
 
             $categorie = new Categorie();
 
             $categorie->setLibelle($libelle);
+            $categorie->setPhoto($photo);
 
             $manager->persist($categorie);
         }
@@ -27,8 +28,11 @@ class CategorieFixtures extends Fixture
     private function getCategorieData(): array
     {
         return [
-            ['Mode'],
-            ['Informatique'],
+            ['Mode', 'mode.jpg'],
+            ['Informatique', 'informatique.jpg'],
+            ['Jardin', 'jardin.jpg'],
+            ['Sport', 'sport.jpg'],
+            ['Intérieur', 'interieur.jpg']
         ];
     }
 

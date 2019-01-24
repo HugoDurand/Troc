@@ -1,6 +1,32 @@
 @import 'app';
 
 .well{
+
+    .link_annonce{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        color: var(--faded-orange);
+        text-align: center;
+        display: block;
+        margin-top: 35px;
+        &:hover {
+            transition: 0.5s ease-in-out;
+            color: var(--charcoal);
+        }
+    }
+
+    .login_link{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        color: var(--charcoal);
+        text-align: center;
+        display: block;
+        &:hover{
+            transition: 0.5s ease-in-out;
+            color:var(--faded-orange);
+        }
+    }
+
     .login_title{
         display: flex;
         justify-content: center;
@@ -65,6 +91,54 @@
         }
     
         button{
+            @extend %button;
+            margin: 55px auto;
+            align-items: inherit;
+        }
+    }
+
+}
+
+.register_form{
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 402px;
+        max-width: 1440px;
+        margin: 0 auto;
+        div{
+            label{
+                @extend %label;
+                margin-top: 25px;
+                display: block;
+            }
+    
+            input{
+                width: 402px;
+                border: none;
+                border-bottom: 1px solid var(--charcoal);
+                outline: none;
+                @extend %input;
+            }
+
+            textarea{
+                width: 402px;
+                height: 85px;
+                outline: none;
+                border: 1px solid var(--charcoal);
+            }
+    
+            input::placeholder{
+                @extend %placeholder;
+            }
+        }
+        button{
+            @extend %button;
+            margin: 55px auto;
+            align-items: inherit;
+        }
+
+        input[type=submit]{
             @extend %button;
             margin: 55px auto;
             align-items: inherit;

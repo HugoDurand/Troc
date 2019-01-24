@@ -17,15 +17,15 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class, array('label' => 'FirstName'))
-            ->add('lastname', TextType::class, array('label' => 'LastName'))
-            ->add('username', TextType::class, array('label' => 'Username'))
-            ->add('email', EmailType::class, array('label' => 'Email'))
-            ->add('phone', TextType::class, array('label' => 'Phone'))
-            ->add('photo', TextType::class, array('label' => 'Photo'))
+            ->add('firstname', TextType::class, array('label' => 'FirstName', 'attr'=>array('placeholder' => 'FirstName', 'class' => 'input')))
+            ->add('lastname', TextType::class, array('label' => 'LastName', 'attr'=>array('placeholder' => 'LastName', 'class' => 'input')))
+            ->add('username', TextType::class, array('label' => 'Username', 'attr'=>array('placeholder' => 'Username', 'class' => 'input')))
+            ->add('email', EmailType::class, array('label' => 'Email', 'attr'=>array('placeholder' => 'Email', 'class' => 'input')))
+            ->add('phone', TextType::class, array('label' => 'Phone', 'attr'=>array('placeholder' => 'Phone', 'class' => 'input')))
             ->add('password', RepeatedType::class, array(
                 'label'=> 'Password',
                 'type' => PasswordType::class,
+                'attr' => array('placeholder' => 'Password'),
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
